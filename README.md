@@ -7,13 +7,13 @@ This project aims to build a model to predict whether a transaction is fraudulen
 ---
 
 ## **Contents**
-1. Introduction
-2. Dataset
-3. Analysis
-4. Models
-5. Results
-6. Conclusion
-7. References
+1. [Introduction](#1-introduction)
+2. [Dataset](#2-dataset)
+3. [Analysis](#3-analysis)
+4. [Models](#4-models)
+5. [Results](#5-results)
+6. [Conclusion](#6-conclusion)
+7. [References](#7-references)
 
 ---
 
@@ -26,7 +26,7 @@ Credit card usage worldwide reached 2.8 billion users in 2019, with 70% owning a
 
 Given these alarming statistics, this project aims to explore machine learning models to detect fraudulent transactions. The goal is to identify and compare various models, focusing on their effectiveness for our dataset.
 
-As a Data Scientist working in FinTech, I’ve observed the complexity of identifying fraud. Fraudsters constantly innovate to bypass detection, making it essential to develop accurate and robust models. While many fraud detection solutions already exist, this project aims to consolidate and evaluate multiple approaches to identify the best one for this dataset.
+As a Data Scientist worked in FinTech, I’ve observed the complexity of identifying fraud. Fraudsters constantly innovate to bypass detection, making it essential to develop accurate and robust models. While many fraud detection solutions already exist, this project aims to consolidate and evaluate multiple approaches to identify the best one for this dataset.
 
 In FinTech, regulatory requirements often favor interpretable models over black-box algorithms. Hence, this project focuses on models like **K-Nearest Neighbors (KNN)**, **Support Vector Machines (SVM)**, and **Logistic Regression**, avoiding black-box methods to ensure interpretability and compliance.
 
