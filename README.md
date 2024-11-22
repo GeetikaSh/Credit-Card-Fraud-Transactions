@@ -96,6 +96,32 @@ If starting from scratch, these steps must be implemented meticulously to ensure
 
 This distribution indicates that fraudulent transactions are not confined to large amounts but can occur at a wide range of transaction values.
 
+### **Multiple Fraud Transactions Per Person**
+
+There is a noticeable section of individuals who have **100% fraudulent transactions**. These cases are worth flagging for further investigation or inclusion in a **fraudulent list**. While it is possible for two individuals to share the same name or for a fraudster to use someone else's fake identity, financial institutions typically have measures in place to handle such cases.
+
+To enhance the model:
+- **Flag Names or Credit Card Numbers**: Any individual with more than **40% of transactions flagged as fraudulent** is added to a **watchlist**.
+- **Use This Feature in the Model**: This flag is introduced as a feature to improve the model's predictive capabilities.
+- **Continuous Monitoring**: Maintain and update this list over time to track recurring fraudulent behavior.
+
+By tracking these flagged names or credit card numbers, banks can implement preventive measures to minimize losses and proactively detect fraud.
+
+### **Observation on Gender**
+
+| Gender | Non-Fraud Transactions | Fraud Transactions | Fraud Percentage |
+|--------|-------------------------|--------------------|------------------|
+| **F**  | 1,009,850              | 4,899             | 0.48%           |
+| **M**  | 832,893                | 4,752             | 0.57%           |
+
+#### Key Insights:
+- There is **no significant pattern** in fraudulent transactions between genders.
+- Both males and females exhibit similar fraud percentages, with **Females** at **0.48%** and **Males** at **0.57%**.
+- This feature does not seem to have a strong predictive power and **can be avoided** as a feature during model training.
+
+#### Conclusion:
+Gender does not significantly impact the likelihood of fraudulent transactions and is not a valuable feature for this specific dataset.
+
 ---
 
 ## **4. Models**
