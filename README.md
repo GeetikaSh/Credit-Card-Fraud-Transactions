@@ -75,6 +75,26 @@ If starting from scratch, these steps must be implemented meticulously to ensure
 - **Additional Observations**:
   - Consumer spending patterns can provide deeper insights into behavior.
   - For marketing or customer profiling purposes, one could analyze spending trends across categories. However, this aspect is outside the scope of fraud detection and does not influence model performance directly.
+ 
+### **Descriptive Statistics for 'amt' in Fraud Transactions**
+
+| Statistic | Value       |
+|-----------|-------------|
+| **Count** | 9,651       |
+| **Mean**  | 530.66      |
+| **Std**   | 391.03      |
+| **Min**   | 1.06        |
+| **25%**   | 240.08      |
+| **50%**   | 390.00      |
+| **75%**   | 902.37      |
+| **Max**   | 1,376.04    |
+
+#### Key Observations:
+- The average transaction amount for fraudulent transactions is **$530.66**.
+- Most fraud transactions fall between **$240.08 (25th percentile)** and **$902.37 (75th percentile)**.
+- The smallest fraudulent transaction amount is **$1.06**, and the largest is **$1,376.04**.
+
+This distribution indicates that fraudulent transactions are not confined to large amounts but can occur at a wide range of transaction values.
 
 ---
 
