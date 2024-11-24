@@ -34,6 +34,23 @@ Advanced models like Random Forest and Gradient Boosting may also be explored fo
 
 ---
 
+### **Why Fraud Transaction Detection Is Necessary**
+
+Financial organizations and customers face **massive financial losses** on a regular basis due to fraudulent transactions. Even small fraudulent amounts per transaction can accumulate into substantial losses over time. To combat this, banks and financial institutions have implemented various measures, such as:
+- **Real-Time Monitoring**: Using automated systems to flag suspicious transactions.
+- **Two-Factor Authentication (2FA)**: Requiring additional verification steps for transactions.
+- **Transaction Alerts**: Notifying customers of transactions in real time to ensure their validity.
+- **Spending Limits**: Setting daily or per-transaction limits to reduce the impact of potential fraud.
+
+Fraud detection is critical to:
+1. **Protect Customers**: Prevent customers from being wrongly charged.
+2. **Minimize Losses**: Reduce financial losses for both banks and individuals.
+3. **Enhance Trust**: Build trust between financial organizations and their customers.
+
+This project is an essential step toward understanding the **patterns of fraudulent transactions** and developing a **basic model** to detect them. The goal is to compare multiple models and determine which provides the **highest accuracy** for this use case.
+
+---
+
 ## **2. Dataset**
 - **Source**: [Kaggle Dataset]
 - **Description**: Simulated dataset containing legitimate and fraudulent transactions from January 1, 2019, to December 31, 2020.
