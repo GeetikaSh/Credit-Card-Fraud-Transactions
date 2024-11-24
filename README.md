@@ -139,6 +139,64 @@ By tracking these flagged names or credit card numbers, banks can implement prev
 #### Conclusion:
 Gender does not significantly impact the likelihood of fraudulent transactions and is not a valuable feature for this specific dataset.
 
+### **State-Wise Analysis of Fraudulent Transactions**
+
+| State | Non-Fraud Transactions | Fraud Transactions | Fraud Percentage |
+|-------|-------------------------|--------------------|------------------|
+| **AK** | 2,913                | 50                | 1.69%           |
+| **AL** | 58,243              | 278               | 0.48%           |
+| **AR** | 44,416              | 195               | 0.44%           |
+| **CA** | 80,093              | 402               | 0.50%           |
+| **DE** | 0                   | 9                 | **100.00%**     |
+| **FL** | 60,441              | 334               | 0.55%           |
+| **NY** | 118,689             | 730               | 0.61%           |
+
+#### Key Observations:
+1. **High Fraudulent Percentage States**:
+   - **Delaware (DE)**: 100% fraudulent transactions.
+   - **Rhode Island (RI)**: 2.01%.
+2. **Large Transaction Volume States**:
+   - **New York (NY)** and **Texas (TX)** have the highest total transactions but maintain a lower fraud percentage.
+3. **Outliers**:
+   - States with no non-fraudulent transactions but high fraud percentages should be flagged for further investigation.
+
+---
+
+### **City-Wise Analysis of Fraudulent Transactions**
+
+| City          | Non-Fraud Transactions | Fraud Transactions | Fraud Percentage |
+|---------------|-------------------------|--------------------|------------------|
+| **Angwin**    | 0.0                   | 10.0              | **100.00%**     |
+| **Nanuet**    | 0.0                   | 10.0              | **100.00%**     |
+| **Orange Park** | 0.0                 | 10.0              | **100.00%**     |
+| **Oakton**    | 0.0                   | 9.0               | **100.00%**     |
+| **Las Vegas** | 0.0                   | 8.0               | **100.00%**     |
+
+#### Key Observations:
+1. **Cities with 100% Fraudulent Transactions**:
+   - Cities like **Angwin**, **Nanuet**, and **Orange Park** have only fraudulent transactions.
+   - These cities should be flagged for detailed investigation.
+2. **Pattern**:
+   - Cities with no non-fraudulent transactions appear as suspicious outliers and may indicate a localized issue with fraud prevention or reporting.
+
+---
+
+### **Correlation Between Fraudulent Transactions and City Population**
+
+#### Correlation Results:
+| Variable 1               | Variable 2               | Correlation Coefficient |
+|---------------------------|--------------------------|--------------------------|
+| **is_fraud**             | **city_pop**            | **0.000325**            |
+| **city_pop**             | **is_fraud**            | **0.000325**            |
+
+#### Key Observations:
+1. The correlation coefficient between **fraudulent transactions (`is_fraud`)** and **city population (`city_pop`)** is extremely low (**0.000325**).
+2. This indicates **no significant linear relationship** between the population size of a city and the likelihood of fraudulent transactions.
+
+#### Analysis:
+- The data suggests that fraud does not disproportionately occur in cities with larger populations.
+- While city population may still be a useful descriptive feature, it likely does not contribute significantly to fraud prediction models.
+
 ---
 
 ## **4. Models**
