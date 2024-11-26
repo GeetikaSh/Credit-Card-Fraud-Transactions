@@ -212,7 +212,11 @@ Key evaluation metrics:
 - F1 Score
 - ROC-AUC
 
-Models will also be analyzed for their interpretability to align with FinTech compliance requirements.
+### ** Model Evaluation:**
+The Models in evaluated on the bases of Accuracy and Speed of Performance
+
+|Serial Number| Model    | Accuracy   | Speed    | Overal Ranking |
+|-------------|----------|------------|----------|-----------------|
 
 ---
 
