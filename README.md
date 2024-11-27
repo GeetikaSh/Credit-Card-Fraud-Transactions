@@ -160,6 +160,19 @@ Gender does not significantly impact the likelihood of fraudulent transactions a
 3. **Outliers**:
    - States with no non-fraudulent transactions but high fraud percentages should be flagged for further investigation.
 
+### **Key Observations On Age**:
+1. **Highest Fraud Percentage**:
+   - The **60+ age group** exhibits the highest fraud percentage at **0.68%**, indicating a potential vulnerability among older adults.
+2. **Lowest Fraud Percentage**:
+   - The **<20 age group** has the lowest fraud percentage at **0.24%**, possibly due to fewer transactions or limited credit access among younger individuals.
+3. **Largest Transaction Volume**:
+   - The **60+ age group** also has the highest number of transactions (both fraudulent and non-fraudulent), making it an important demographic to monitor.
+4. **Low Correlation**:
+   - The correlation coefficient between **fraudulent transactions (`is_fraud`)** and **age** is **0.0111**, which is extremely low.
+   - This indicates that there is **no significant linear relationship** between age and the likelihood of a fraudulent transaction.
+5. **Implication for the Model**:
+   - Age might not be a strong predictor of fraudulent transactions when considered in isolation.
+
 ---
 
 ### **City-Wise Analysis of Fraudulent Transactions**
