@@ -197,6 +197,12 @@ Gender does not significantly impact the likelihood of fraudulent transactions a
 - The data suggests that fraud does not disproportionately occur in cities with larger populations.
 - While city population may still be a useful descriptive feature, it likely does not contribute significantly to fraud prediction models.
 
+### Observation on Jobs
+
+- Out of **497 Jobs**, **22 jobs** have high fraudulent activities.
+- All these 22 jobs have **100% fraudulent activities**.
+- This might just be a mere coincidence, but it is important to consider this feature in the modeling process.
+
 ---
 
 ## **4. Models**
