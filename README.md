@@ -218,13 +218,28 @@ Key evaluation metrics:
 - F1 Score
 - ROC-AUC
 
-### ** Model Evaluation:**
-The Models in evaluated on the bases of Accuracy and Speed of Performance
+### **Model Evaluation**
 
-|Serial Number| Model    | Accuracy   | Speed    | Overal Ranking |
-|-------------|----------|------------|----------|-----------------|
+The models were evaluated based on **Accuracy**, **Speed of Performance**, **Sensitivity**, **Error Rate**, and an overall ranking. These models were chosen as they are commonly used in **Credit Card Fraud Detection**, supported by research papers that highlight their relevance in fraud detection tasks.
 
----
+This project aims to conclude which models are most suitable for detecting fraudulent transactions.
+
+| Serial Number | Model               | Accuracy | Speed    | Sensitivity | Error Rate | Overall Ranking |
+|---------------|---------------------|----------|----------|-------------|------------|-----------------|
+| 1             | Logistic Regression |          |          |             |            |                 |
+| 2             | SVM                 |          |          |             |            |                 |
+| 3             | KNN                 |          |          |             |            |                 |
+| 4             | Bayesian            |          |          |             |            |                 |
+| 5             | Neural Network      |          |          |             |            |                 |
+| 6             | Naïve Bayes         |          |          |             |            |                 |
+| 7             | Random Forest       |          |          |             |            |                 |
+
+#### **Evaluation Metrics**:
+1. **Accuracy**: Measures the proportion of correctly classified instances.
+2. **Speed**: Assesses the time taken by the model to process transactions.
+3. **Sensitivity**: Evaluates the model's ability to correctly identify fraudulent transactions.
+4. **Error Rate**: Indicates the proportion of incorrect predictions made by the model.
+5. **Overall Ranking**: Combines the above metrics to rank models based on their overall performance.
 
 ## **5. Results**
 The results section will document:
