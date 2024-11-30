@@ -9,7 +9,7 @@ This project aims to build a model to predict whether a transaction is fraudulen
 1. [Introduction](#1-introduction)
 2. [Dataset](#2-dataset)
 3. [Analysis](#3-analysis)
-4. [Models](#4-models)
+4. [Model Evaluation](#4-model-evaluation)
 5. [Results](#5-results)
 6. [Conclusion](#6-conclusion)
 7. [References](#7-references)
@@ -23,7 +23,7 @@ Worldwide credit card usage reached 2.8 billion users in 2019, with 70% owning a
   - **Identity Theft**: Creating credit card accounts in someone else’s name (48% increase from 2019 to 2020).
   - **Account Takeover**: Misusing an existing account (9% increase from 2019 to 2020).
 
-This project aims to detect fraudulent transactions using machine learning. It will evaluate multiple models, focusing on their accuracy and interpretability. 
+This project aims to detect fraudulent transactions using machine learning. It will evaluate multiple models, focusing on their accuracy and interpretability.
 
 As a Data Scientist with FinTech experience, I’ve observed that fraud detection is a challenging problem due to fraudsters' ability to adapt. Moreover, FinTech regulatory requirements often favor interpretable models over black-box algorithms to maintain compliance and facilitate debugging. For this reason, this project focuses on interpretable models like:
 - **K-Nearest Neighbors (KNN)**
@@ -52,14 +52,14 @@ This project is an essential step toward understanding the **patterns of fraudul
 ---
 
 ## **2. Dataset**
-- **Source**: [Kaggle Dataset]
+- **Source**: [Kaggle Dataset](https://www.kaggle.com/)
 - **Description**: Simulated dataset containing legitimate and fraudulent transactions from January 1, 2019, to December 31, 2020.
 - **Scope**:
   - Transactions from **1,000 customers** at **800 merchants**.
 - **Columns**:
   - Full List: ['Unnamed: 0', 'trans_date_trans_time', 'cc_num', 'merchant', 'category', 'amt', 'first', 'last', 'gender', 'street', 'city', 'state', 'zip', 'lat', 'long', 'city_pop', 'job', 'dob', 'trans_num', 'unix_time', 'merch_lat', 'merch_long', 'is_fraud']
   - Relevant Columns: ['trans_date_trans_time', 'amt', 'merchant', 'category', 'is_fraud']
-  
+
 ### **Dataset Preparation**
 Data preparation is crucial for any machine learning task. While this dataset is already cleaned and divided into training and testing sets, key considerations for future work include:
 - Handling **missing values**.
@@ -75,44 +75,21 @@ If starting from scratch, these steps must be implemented meticulously to ensure
 - **Total Transactions**: 1,842,743 (legitimate) + 9,651 (fraudulent)
 - **Fraudulent Transactions Percentage**: **0.52%**
 - The dataset is **highly imbalanced**, which necessitates the use of specialized techniques like oversampling or cost-sensitive learning to train models effectively.
-
-### **Merchant Names**
-- **Key Observations**:
-  - All merchant names in the dataset start with `'fraud_'`.
-  - Fraud transaction percentages range between **0.0% and 2.18%**.
-
-- **Feature Engineering**:
-  - **`merchant_with_multiple_fraud_transactions`**:
-    - A new feature that flags merchants associated with multiple fraudulent transactions.
-    - This feature improves the model's sensitivity to recurring fraud patterns.
-
-### **Category Analysis**
+- All **merchant names** in the dataset start with `'fraud_'`.
+- **Fraud transaction percentages per merchant** range between **0.0% and 2.18%**.
 - **Number of Unique Categories**: 14
 - **Most Frequent Categories**: `grocery_pos` and `shopping_net`
-- **Additional Observations**:
-  - Consumer spending patterns can provide deeper insights into behavior.
-  - For marketing or customer profiling purposes, one could analyze spending trends across categories. However, this aspect is outside the scope of fraud detection and does not influence model performance directly.
- 
-### **Descriptive Statistics for 'amt' in Fraud Transactions**
-
-| Statistic | Value       |
-|-----------|-------------|
-| **Count** | 9,651       |
-| **Mean**  | 530.66      |
-| **Std**   | 391.03      |
-| **Min**   | 1.06        |
-| **25%**   | 240.08      |
-| **50%**   | 390.00      |
-| **75%**   | 902.37      |
-| **Max**   | 1,376.04    |
-
-#### Key Observations:
 - The average transaction amount for fraudulent transactions is **$530.66**.
 - Most fraud transactions fall between **$240.08 (25th percentile)** and **$902.37 (75th percentile)**.
 - The smallest fraudulent transaction amount is **$1.06**, and the largest is **$1,376.04**.
+- Both males and females exhibit similar fraud percentages, with **Females** at **0.48%** and **Males** at **0.57%**.There is **no significant pattern** in fraudulent transactions between genders.
+- Out of **497 Jobs**, **22 jobs** have high fraudulent activities. All these 22 jobs have **100% fraudulent activities**.
+- 
 
-This distribution indicates that fraudulent transactions are not confined to large amounts but can occur at a wide range of transaction values.
+### **Feature Engineering: Merchant Names**:
+  - Added new feature **`merchant_with_multiple_fraud_transactions`**: This feature improves the model's sensitivity to recurring fraud patterns.
 
+ 
 ### **Multiple Fraud Transactions Per Person**
 
 There is a noticeable section of individuals who have **100% fraudulent transactions**. These cases are worth flagging for further investigation or inclusion in a **fraudulent list**. While it is possible for two individuals to share the same name or for a fraudster to use someone else's fake identity, financial institutions typically have measures in place to handle such cases.
@@ -120,24 +97,9 @@ There is a noticeable section of individuals who have **100% fraudulent transact
 To enhance the model:
 - **Flag Names or Credit Card Numbers**: Any individual with more than **40% of transactions flagged as fraudulent** is added to a **watchlist**.
 - **Use This Feature in the Model**: This flag is introduced as a feature to improve the model's predictive capabilities.
-- **Continuous Monitoring**: Maintain and update this list over time to track recurring fraudulent behavior.
 
 By tracking these flagged names or credit card numbers, banks can implement preventive measures to minimize losses and proactively detect fraud.
 
-### **Observation on Gender**
-
-| Gender | Non-Fraud Transactions | Fraud Transactions | Fraud Percentage |
-|--------|-------------------------|--------------------|------------------|
-| **F**  | 1,009,850              | 4,899             | 0.48%           |
-| **M**  | 832,893                | 4,752             | 0.57%           |
-
-#### Key Insights:
-- There is **no significant pattern** in fraudulent transactions between genders.
-- Both males and females exhibit similar fraud percentages, with **Females** at **0.48%** and **Males** at **0.57%**.
-- This feature does not seem to have a strong predictive power and **can be avoided** as a feature during model training.
-
-#### Conclusion:
-Gender does not significantly impact the likelihood of fraudulent transactions and is not a valuable feature for this specific dataset.
 
 ### **State-Wise Analysis of Fraudulent Transactions**
 
@@ -210,29 +172,9 @@ Gender does not significantly impact the likelihood of fraudulent transactions a
 - The data suggests that fraud does not disproportionately occur in cities with larger populations.
 - While city population may still be a useful descriptive feature, it likely does not contribute significantly to fraud prediction models.
 
-### Observation on Jobs
-
-- Out of **497 Jobs**, **22 jobs** have high fraudulent activities.
-- All these 22 jobs have **100% fraudulent activities**.
-- This might just be a mere coincidence, but it is important to consider this feature in the modeling process.
-
 ---
 
-## **4. Models**
-The following models will be implemented and compared based on their interpretability, accuracy, and suitability for imbalanced datasets:
-1. **K-Nearest Neighbors (KNN)**
-2. **Support Vector Machines (SVM)**
-3. **Logistic Regression**
-4. Advanced models like **Random Forest** and **Gradient Boosting** for comparison.
-
-Key evaluation metrics:
-- Precision
-- Recall
-- F1 Score
-- ROC-AUC
-
-### **Model Evaluation**
-
+## **4. Model Evaluation**
 The models were evaluated based on **Accuracy**, **Speed of Performance**, **Sensitivity**, **Error Rate**, and an overall ranking. These models were chosen as they are commonly used in **Credit Card Fraud Detection**, supported by research papers that highlight their relevance in fraud detection tasks.
 
 This project aims to conclude which models are most suitable for detecting fraudulent transactions.
@@ -246,6 +188,7 @@ This project aims to conclude which models are most suitable for detecting fraud
 | 5             | Neural Network      |          |          |             |            |                 |
 | 6             | Naïve Bayes         |          |          |             |            |                 |
 | 7             | Random Forest       |          |          |             |            |                 |
+| 8             | Gradient Boosting      |          |          |             |            |                 |
 
 #### **Evaluation Metrics**:
 1. **Accuracy**: Measures the proportion of correctly classified instances.
