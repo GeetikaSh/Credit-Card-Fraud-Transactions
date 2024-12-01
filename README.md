@@ -172,6 +172,19 @@ By tracking these flagged names or credit card numbers, banks can implement prev
 - The data suggests that fraud does not disproportionately occur in cities with larger populations.
 - While city population may still be a useful descriptive feature, it likely does not contribute significantly to fraud prediction models.
 
+### **Key Observations On Transaction Timings**:
+   - **Fraudulent Peak Hours**: **22:00 (10 PM)** - **4:00 (04 AM)**.These hours show over **20x higher fraud rates** compared to most other hours.
+   - **Lowest Fraud Rates**: Early morning hours (e.g., **6:00**, **10:00**, **12:00**) exhibit the lowest fraud percentages, all below **0.10%**.
+   - **Trend**: Fraudulent transactions are generally stable throughout the day, with a sharp increase during late-night hours.
+   - **Implications for the Model**:
+   -- Hour of the day could be a valuable feature for the fraud detection model.
+   -- Late-night transactions might require additional monitoring or stricter verification processes.
+
+---
+
+### **Next Steps**:
+- Incorporate the `start_of_hour` feature into the model to enhance predictive capabilities.
+- Explore additional patterns by combining `start_of_hour` with other features (e.g., transaction amount, merchant category) to identify specific risk factors.
 ---
 
 ## **4. Model Evaluation**
