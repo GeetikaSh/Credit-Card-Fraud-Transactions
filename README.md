@@ -56,9 +56,6 @@ This project is an essential step toward understanding the **patterns of fraudul
 - **Description**: Simulated dataset containing legitimate and fraudulent transactions from January 1, 2019, to December 31, 2020.
 - **Scope**:
   - Transactions from **1,000 customers** at **800 merchants**.
-- **Columns**:
-  - Full List: ['Unnamed: 0', 'trans_date_trans_time', 'cc_num', 'merchant', 'category', 'amt', 'first', 'last', 'gender', 'street', 'city', 'state', 'zip', 'lat', 'long', 'city_pop', 'job', 'dob', 'trans_num', 'unix_time', 'merch_lat', 'merch_long', 'is_fraud']
-  - Relevant Columns: ['trans_date_trans_time', 'amt', 'merchant', 'category', 'is_fraud']
 
 ### **Dataset Preparation**
 Data preparation is crucial for any machine learning task. While this dataset is already cleaned and divided into training and testing sets, key considerations for future work include:
@@ -84,7 +81,13 @@ If starting from scratch, these steps must be implemented meticulously to ensure
 - The smallest fraudulent transaction amount is **$1.06**, and the largest is **$1,376.04**.
 - Both males and females exhibit similar fraud percentages, with **Females** at **0.48%** and **Males** at **0.57%**.There is **no significant pattern** in fraudulent transactions between genders.
 - Out of **497 Jobs**, **22 jobs** have high fraudulent activities. All these 22 jobs have **100% fraudulent activities**.
-- 
+- The **60+ age group** exhibits the highest fraud percentage at **0.68%**, indicating a potential vulnerability among older adults.
+- The **<20 age group** has the lowest fraud percentage at **0.24%**, possibly due to fewer transactions or limited credit access among younger individuals.
+- This indicates that there is **no significant linear relationship** between age and the likelihood of a fraudulent transaction. Hence age might not be a siggnifiacnt feature for Modelling,
+  but is considered as one of the feature in modeling training as senoir adults are more prone to fradulant activitis hence it is worth considering this feature for modelling.
+- **Fraudulent Peak Hours**: **22:00 (10 PM)** - **4:00 (04 AM)**.These hours show over **20x higher fraud rates** compared to most other hours.
+    Early morning hours (e.g., **6:00**, **10:00**, **12:00**) exhibit the lowest fraud percentages, all below **0.10%**.
+
 
 ### **Feature Engineering: Merchant Names**:
   - Added new feature **`merchant_with_multiple_fraud_transactions`**: This feature improves the model's sensitivity to recurring fraud patterns.
@@ -121,20 +124,6 @@ By tracking these flagged names or credit card numbers, banks can implement prev
    - **New York (NY)** and **Texas (TX)** have the highest total transactions but maintain a lower fraud percentage.
 3. **Outliers**:
    - States with no non-fraudulent transactions but high fraud percentages should be flagged for further investigation.
-
-### **Key Observations On Age**:
-1. **Highest Fraud Percentage**:
-   - The **60+ age group** exhibits the highest fraud percentage at **0.68%**, indicating a potential vulnerability among older adults.
-2. **Lowest Fraud Percentage**:
-   - The **<20 age group** has the lowest fraud percentage at **0.24%**, possibly due to fewer transactions or limited credit access among younger individuals.
-3. **Largest Transaction Volume**:
-   - The **60+ age group** also has the highest number of transactions (both fraudulent and non-fraudulent), making it an important demographic to monitor.
-4. **Low Correlation**:
-   - The correlation coefficient between **fraudulent transactions (`is_fraud`)** and **age** is **0.0111**, which is extremely low.
-   - This indicates that there is **no significant linear relationship** between age and the likelihood of a fraudulent transaction.
-5. **Implication for the Model**:
-   - Age might not be a strong predictor of fraudulent transactions when considered in isolation.
-
 ---
 
 ### **City-Wise Analysis of Fraudulent Transactions**
@@ -172,19 +161,6 @@ By tracking these flagged names or credit card numbers, banks can implement prev
 - The data suggests that fraud does not disproportionately occur in cities with larger populations.
 - While city population may still be a useful descriptive feature, it likely does not contribute significantly to fraud prediction models.
 
-### **Key Observations On Transaction Timings**:
-   - **Fraudulent Peak Hours**: **22:00 (10 PM)** - **4:00 (04 AM)**.These hours show over **20x higher fraud rates** compared to most other hours.
-   - **Lowest Fraud Rates**: Early morning hours (e.g., **6:00**, **10:00**, **12:00**) exhibit the lowest fraud percentages, all below **0.10%**.
-   - **Trend**: Fraudulent transactions are generally stable throughout the day, with a sharp increase during late-night hours.
-   - **Implications for the Model**:
-   -- Hour of the day could be a valuable feature for the fraud detection model.
-   -- Late-night transactions might require additional monitoring or stricter verification processes.
-
----
-
-### **Next Steps**:
-- Incorporate the `start_of_hour` feature into the model to enhance predictive capabilities.
-- Explore additional patterns by combining `start_of_hour` with other features (e.g., transaction amount, merchant category) to identify specific risk factors.
 ---
 
 ## **4. Model Evaluation**
