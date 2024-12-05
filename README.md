@@ -87,21 +87,13 @@ If starting from scratch, these steps must be implemented meticulously to ensure
   but is considered as one of the feature in modeling training as senoir adults are more prone to fradulant activitis hence it is worth considering this feature for modelling.
 - **Fraudulent Peak Hours**: **22:00 (10 PM)** - **4:00 (04 AM)**.These hours show over **20x higher fraud rates** compared to most other hours.
     Early morning hours (e.g., **6:00**, **10:00**, **12:00**) exhibit the lowest fraud percentages, all below **0.10%**.
+- There is a noticeable section of individuals who have **100% fraudulent transactions**. These cases are worth flagging for further investigation or inclusion in a **fraudulent list**. While it is possible for two individuals to share the same name or for a fraudster to use someone else's fake identity, financial institutions typically have measures in place to handle such cases.
+
 
 
 ### **Feature Engineering: Merchant Names**:
   - Added new feature **`merchant_with_multiple_fraud_transactions`**: This feature improves the model's sensitivity to recurring fraud patterns.
-
- 
-### **Multiple Fraud Transactions Per Person**
-
-There is a noticeable section of individuals who have **100% fraudulent transactions**. These cases are worth flagging for further investigation or inclusion in a **fraudulent list**. While it is possible for two individuals to share the same name or for a fraudster to use someone else's fake identity, financial institutions typically have measures in place to handle such cases.
-
-To enhance the model:
-- **Flag Names or Credit Card Numbers**: Any individual with more than **40% of transactions flagged as fraudulent** is added to a **watchlist**.
-- **Use This Feature in the Model**: This flag is introduced as a feature to improve the model's predictive capabilities.
-
-By tracking these flagged names or credit card numbers, banks can implement preventive measures to minimize losses and proactively detect fraud.
+  - Added new feature **`name_exists_in_fraudulent_name_list`**: To keep an eye for the names who regularly occurs under fradulant transaction List.
 
 
 ### **State-Wise Analysis of Fraudulent Transactions**
